@@ -2,7 +2,7 @@
 #### Scripts and original data ####
 ###################################
 
-The initial data consists of the matrices of clonal alterations and epistatic factors in various datasets, including TCGA, paired melanomas and precursors (Shain et al, NEJM 2015), colorectal adenomas and carcinomas (Cross et al, Nat Gen 2018), metastases (Robinson et al, Nature 2017).
+The initial data consists of the matrices of clonal alterations and epistatic factors in various datasets, including TCGA, paired melanomas and precursors (Shain et al, NEJM 2015), colorectal adenomas and carcinomas (Cross et al, Nat Gen 2018), metastases (Robinson et al, Nature 2017) and pan-cancer gene-specific selection metrics (Zapata et al, Genome Bio 2018).
 
 ## Required general data are collected in the misc folder
 CNA_drivers_per_tumor_type.tsv : intOGen CNA drivers
@@ -36,17 +36,19 @@ CNAs: http://www.nejm.org/doi/suppl/10.1056/NEJMoa1502583/suppl_file/nejmoa15025
 Script : melanoma_fitness.R
 # Change the model if desired (need to comment/uncomment bits of code).
 
-## Coloractal Adenomas & Carcinomas:
+## Colorectal Adenomas & Carcinomas:
 adenoma directory
-
+All data for adenoma and carcinoma samples were obtained from the raw mutation calls from Cross et al, Nat Evo & Eco 2018, then processed to define the clonal mutations. Clonal mutations are either reported per biopsy/sample or per patient.
+Script: adenoma_fitness.R
 
 ## Metastases (MET500 dataset):
 mets directory
 The required nature23306-s3.xlsx table for copy number data is available as supplementary table 3 from the original article https://media.nature.com/original/nature-assets/nature/journal/v548/n7667/extref/nature23306-s3.xlsx
 The required somatic_v4.csv and cnv_v4.csv tables are available at https://met500.path.med.umich.edu/downloadMet500DataSets
 sample_info.xlsx and sequencing_info.xlsx are included in this archive and have been extracted from Supp Tables 1 and 2 (respectively) from the original manuscript's supplementary information in PDF format (https://media.nature.com/original/nature-assets/nature/journal/v548/n7667/extref/nature23306-s1.pdf)
-
+Script: met500_fitness.R
 
 ## dN/dS data from Zapata et al:
 dnds directory
 The required 13059_2018_1434_MOESM2_ESM.txt table of pan-cancer dN/dS per gene can been retrieved from the Additional File 2 from the original article: https://static-content.springer.com/esm/art%3A10.1186%2Fs13059-018-1434-0/MediaObjects/13059_2018_1434_MOESM2_ESM.txt
+Script: cor_with_landscapes.R
