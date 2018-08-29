@@ -13,10 +13,11 @@ Mutational_drivers_per_tumor_type.tsv : intOGen mutational drivers
 The following scripts have to be run in order to produce all data needed for further processing.
 
 1: tcga/extract_parameters.R
-2: models/fit_models_2params.R
-3: models/fit_models_3params.R
-4: models/select_model.R
-5: networks/landscape_networks.R
+2: tcga/repeatability.R
+3: models/fit_models_2params.R
+4: models/fit_models_3params.R
+5: models/select_model.R
+6: networks/landscape_networks.R
 
 Epistatic factors are calculated using 10,000 random draws and may therefore vary slightly between replicate simulations. The ones used in the original publications are included in the tcga/epiFactMat_* files. They can however be recomputed during the scripts by commenting/uncommenting code in the last section of the tcga/extract_parameters.R script.
 

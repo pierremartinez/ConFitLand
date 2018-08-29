@@ -75,6 +75,7 @@ names(colSet) <- names(socPowL)
 
 library(beanplot)
 pdf("plots/repeatability_plots.pdf")
+##beanplots
 beanplot(realRatio95, cutmin=0, what=c(0,1,1,0), col=rainbow11[c(8,3,4,1)], show.names=T, las=2, ylab="Normalised Jaccard Index")
 abline(h=1, lty=2)
 text(unlist(lapply(perc95*100, sprintf, fmt="%.0f%%")), x=seq(0.66, length(sets)-.34, 1), y=max(unlist(realRatio95), na.rm=T)/3,
@@ -86,4 +87,18 @@ beanplot(realJacL, cutmin=0, what=c(0,1,1,0), col=c(rainbow11[c(8,3,4)], "black"
 beanplot(simpoolL, cutmin=0, what=c(0,1,1,0), col=c(rainbow11[c(8,3,4)], "black"), bw=.001, at=seq(2, length(simpoolL)*3-1, 3), add=T,
          show.names=F, maxwidth=1.25)
 axis(1, at=seq(1.5, length(realJacL)*3-1.5, 3), label=sets, las=2)
+
+##boxplots
+boxplot(realRatio95, outline=F, col=rainbow10, las=2, ylab="Normalised Jaccard Index")
+abline(h=1, lty=1)
+text(unlist(lapply(perc95*100, sprintf, fmt="%.0f%%")), x=seq(0.66, length(sets)-.34, 1), y=7.25,
+     col=colSet[sets])
+
+boxplot(realJacL, cutmin=0, what=c(0,1,1,0), col=rainbow10, xlim=c(0.5, length(realJacL)*3-.5), bw=.001,
+         at=seq(1, length(realJacL)*3-2, 3), xaxt="n", ylab="Jaccard Index", maxwidth=1.25, outline=F)
+boxplot(simpoolL, cutmin=0, what=c(0,1,1,0), col=rainbow10, bw=.001, at=seq(2, length(simpoolL)*3-1, 3), add=T,
+         show.names=F, maxwidth=1.25, outline=F)
+axis(1, at=seq(1.5, length(realJacL)*3-1.5, 3), label=sets, las=2)
 dev.off()
+
+unlist(lapply(realRatio95, mean))
